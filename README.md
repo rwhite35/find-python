@@ -39,7 +39,7 @@ STNDOUT:
 - removing: ./subPyRes/refPy.py
 - removing: ./subPyPath/mySubPath.py
 - removing: ./subPyPath/subMergePath/submarine.py
-- done removing files! See removed in /Users/whiter6/Documents/python.pyp.csv
+- done removing files! See removed in /Users/USER/Documents/python.pyp.csv
 
 Expand any sub directory and only the non-python files remain.
 
@@ -58,7 +58,7 @@ Expand any sub directory and only the non-python files remain.
 
 NOTE 1: This process is atomic and should ONLY be run in the User space
   and under a known directory where Python user installed versions exist.
-  -> Windows User installed (typically) be: `C:\Users\{RACF}\AppData\Python`
+  -> Windows User installed (typically) be: `C:\Users\USER\AppData\Python`
   -> Mac Homebrew installed will be:  `/opt/homebrew/Cellar/`
 
 NOTE 2: findPython.py can reside in the users HOME directory and will work 
