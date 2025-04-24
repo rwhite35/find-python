@@ -24,13 +24,13 @@ The benefit of this script is that it can recurse down through multiples levels
 within the parent file structure.
 
 NOTE: Locations may/will vary
-Ex. Windows User Space Installed
-    -> C:\Users\USER\AppData\Python  # parent can have multiple versions installed.
-    cmd: python ../../../findPython.py  # same-as python C:\Users\USER\findPython.py
-
-Ex. MacOS Homebrew Installed
-    -> /opt/homebrew/Cellar            # can have multiple version installed.
-    cmd: python ../../../findPython.py # same-as python /Users/USER/findPython.py 
+<br/>Ex. Windows User Space Installed
+<br/>-> C:\Users\USER\AppData\Python  # parent can have multiple versions installed.
+<br/>cmd: python ../../../findPython.py  # same-as python C:\Users\USER\findPython.py
+<br/>
+<br/>Ex. MacOS Homebrew Installed
+<br/>-> /opt/homebrew/Cellar            # can have multiple version installed.
+<br/>cmd: python ../../../findPython.py # same-as python /Users/USER/findPython.py 
 
 STNDOUT:
 - csv file: /Users/RACF/Documents/python.pyp.csv
@@ -63,9 +63,7 @@ NOTE 1: This process is atomic and should ONLY be run in the User space
 
 NOTE 2: findPython.py can reside in the users HOME directory and will work 
      from HOME directory, but that risks removing System required python files 
-     that should be included for critical system or application operation.
-
+     that should be included for critical system or application operation.<br/>
      For example, on MacOS, application support resources are located under 
      HOME/Library/Application Support/* which my break application functionality
      if Python is a dependency.
-
