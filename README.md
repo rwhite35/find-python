@@ -25,11 +25,11 @@ within the parent file structure.
 
 NOTE: Locations may/will vary
 <br/>Ex. Windows User Space Installed
-<br/>-> C:\Users\USER\AppData\Python  # parent can have multiple versions installed.
-<br/>cmd: python ../../../findPython.py  # same-as python C:\Users\USER\findPython.py
+<br/>-> C:\Users\USER\AppData\Python # parent can have multiple versions installed.
+<br/>cmd: python ../../../findPython.py # same-as python C:\Users\USER\findPython.py
 <br/>
 <br/>Ex. MacOS Homebrew Installed
-<br/>-> /opt/homebrew/Cellar            # can have multiple version installed.
+<br/>-> /opt/homebrew/Cellar # can have multiple version installed.
 <br/>cmd: python ../../../findPython.py # same-as python /Users/USER/findPython.py 
 
 STNDOUT:
@@ -58,8 +58,8 @@ Expand any sub directory and only the non-python files remain.
 
 NOTE 1: This process is atomic and should ONLY be run in the User space
   and under a known directory where Python user installed versions exist.
-  -> Windows User installed (typically) be: `C:\Users\USER\AppData\Python`
-  -> Mac Homebrew installed will be:  `/opt/homebrew/Cellar/`
+  <br/>-> Windows User installed (typically) be: `C:\Users\USER\AppData\Python`
+  <br/>-> Mac Homebrew installed will be:  `/opt/homebrew/Cellar/`
 
 NOTE 2: findPython.py can reside in the users HOME directory and will work 
      from HOME directory, but that risks removing System required python files 

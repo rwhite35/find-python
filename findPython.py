@@ -24,17 +24,17 @@ from pathlib import Path
 
 """
 set the parent directory from the directory (and decendents) where
-the command is executed. If the abosute path to the parent
+the command is executed. For example, if the path to the parent
 dir is /Users/RACF/myPython, then '.' would be myPython.
 """
 p = Path('.')
 csvPath = os.environ.get("HOME") + "/Documents/"
 csvFile = "python.pyp.csv"
-print("csv file: " + csvPath + csvFile)
+dryRun = False # set to True to disable file remove
 
 
 """
-returns list of path/file.py
+returns List of .py path/files
 ex. ['./myRoot.py', './subPyRes/resPy.py',...]
 """
 def pyList(p):
@@ -44,16 +44,14 @@ def pyList(p):
       path = os.path.join(root, filename)
       if os.path.isfile(path):
         _, ex = os.path.splitext(path)
-        if ex == ".py":
+        if ex == ".py": # could add other conditions here
           file_list.append(path)
   return file_list
 
 
 """
-write .py files in List to csv text file.
-path/file reference is from executed parent directory
-ex. if parent is myPython/ with sub dir lib/,
-    the path/file would be ./lib/myMain.py 
+write List path/files to csv file for storage and review.
+the csv is line-delimited with each path/file on a newline.
 """
 def writePyPath(fileList, csvPath, csvFile):
   csvOut = csvPath + csvFile
@@ -65,12 +63,12 @@ def writePyPath(fileList, csvPath, csvFile):
 
 
 """
-reads in each path/file and removes it if the file exist.
-NOTE: process is atomic!  confirm removed in csv file list.
-ex. if ./lib/myMain.py is included in the csv file, the abs path is 
-    /Users/RACF/myPython/lib/myMain.py when executed from myPython parent.
+NOTE: process is atomic!  Review csv file for all files removed.
+reads in csv's path/file and removes it if the file exist.
+if a file doesn't exist, the process will move on to the next line till EOF.
+- dryRun: set to True to disable file remove.
 """
-def readRemovePy(csvPath, csvFile):
+def readRemovePy(csvPath, csvFile, dryRun):
   try:
     path = csvPath + csvFile
     with open(path, 'r') as file:
@@ -78,7 +76,7 @@ def readRemovePy(csvPath, csvFile):
       for row in reader:
         fname = row[0].strip() # file names in each row
         print(f"removing: {fname}")
-        if os.path.exists(fname):
+        if os.path.exists(fname) and dryRun == False:
           os.remove(fname)
         else:
           print(f"{fname} is not a file moving on to next...")
@@ -93,6 +91,6 @@ def readRemovePy(csvPath, csvFile):
 
 fileList = pyList(p)
 _ = writePyPath(fileList, csvPath, csvFile)
-_ = readRemovePy(csvPath, csvFile)
+_ = readRemovePy(csvPath, csvFile, dryRun)
 print(f"done removing files! See removed in {csvPath + csvFile}")
 
